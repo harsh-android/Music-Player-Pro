@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1012356832916",
+    "firebase_url": "https://av-music.firebaseio.com",
+    "project_id": "av-music",
+    "storage_bucket": "av-music.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012356832916:android:91eababd22c6bba5",
+        "android_client_info": {
+          "package_name": "com.avinfo.avmusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012356832916-eesgcbvum9i6qsupaqevpgqdra4jqer3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.avinfo.avmusic",
+            "certificate_hash": "8432ba0f5db820a92d0446b5c344bc9d2be6f6ad"
+          }
+        },
+        {
+          "client_id": "1012356832916-b5lalanj85gl13225v4gvthod0dmsv77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7g5L81IfXI3ggnyR4_57hAv5DQEnNU2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012356832916-b5lalanj85gl13225v4gvthod0dmsv77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

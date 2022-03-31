@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.avinfo.avmusic.CustomViews.InsetsPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.andremion.music.MusicCoverView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/logo"
+        android:transitionName="@string/transition_name_cover"
+        app:layout_heightPercent="35%"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <View
+        android:id="@+id/pane"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignStart="@+id/pane_anchor"
+        android:layout_alignTop="@+id/pane_anchor"
+        android:layout_alignEnd="@+id/pane_anchor"
+        android:layout_alignBottom="@+id/pane_anchor"
+        android:background="@color/colorPane" />
+
+    <LinearLayout
+        android:id="@+id/pane_anchor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/cover"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/track_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:transitionName="@string/transition_name_time"
+                tools:text="02:30" />
+
+            <SeekBar
+                android:id="@+id/progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/inner_padding"
+                android:layout_marginEnd="@dimen/inner_padding"
+                android:layout_weight="1"
+                android:thumbTint="?attr/primaryColor"
+                android:transitionName="@string/transition_name_progress"
+                app:backgroundTint="?attr/primaryLightColor" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:transitionName="@string/transition_name_duration"
+                tools:text="04:30" />
+
+            <Space
+                android:id="@+id/fab_placeholder"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/inner_padding" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/playlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cover"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/activity_vertical_margin"
+        android:transitionGroup="true">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_playlist"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:text="@string/songs"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <ImageButton
+            android:id="@+id/options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:onClick="playlistOptions"
+            android:tint="@color/md_grey_600"
+            android:contentDescription="@string/options"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_3dots" />
+
+    </RelativeLayout>
+
+    <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+        android:id="@+id/tracks_nowplaying"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/playlist"
+        android:nestedScrollingEnabled="false"
+        app:fastScrollAutoHide="true"
+        app:fastScrollAutoHideDelay="1500"
+        app:fastScrollPopupBgColor="?attr/primaryColor"
+        app:fastScrollThumbColor="?attr/primaryDarkColor"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".fragments.SongsFragment"
+        tools:itemCount="4"
+        tools:listitem="@layout/recycler_view_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/cover"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/fab_vertical_margin"
+        android:scaleType="center"
+        android:src="@drawable/ic_music"
+        android:transitionName="@string/transition_name_fab"
+        app:backgroundTint="?attr/colorAccent"
+        app:fabSize="mini" />
+
+</com.avinfo.avmusic.CustomViews.InsetsPercentRelativeLayout>

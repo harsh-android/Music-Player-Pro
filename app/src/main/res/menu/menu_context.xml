@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nowPlayingIcon"
+        android:icon="@drawable/ic_music"
+        android:orderInCategory="10"
+        android:title="@string/now_playing" />
+
+    <item
+        android:id="@+id/context_menu_settings"
+        android:orderInCategory="80"
+        android:title="@string/settings" />
+
+    <item
+        android:id="@+id/context_menu_end"
+        android:icon="@drawable/ic_cancel"
+        android:orderInCategory="100"
+        android:title="@string/end" />
+
+    <item
+        android:id="@+id/lastPlaylist"
+        android:icon="@drawable/ic_lastplaylist"
+        android:title="@string/last_playlist" />
+</menu>

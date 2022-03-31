@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.avinfo.avmusic">
+
+    <uses-sdk tools:overrideLibrary="com.bullhead.equalizer" />
+    <!-- So we can play data while the device is locked -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".ExampleApplication"
+        android:allowBackup="false"
+        android:largeHeap="true"
+        android:fullBackupContent="false"
+        android:icon="@drawable/logo_s"
+        android:roundIcon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.RED">
+        <activity
+            android:name="com.avinfo.avmusic.Activities.ActivitySetting"
+            android:label="@string/settings"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.avinfo.avmusic.Activities.ActivityMain" />
+        <activity
+            android:name="com.avinfo.avmusic.Activities.AV"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- Services (run on the background) -->
+        <service
+            android:name="com.avinfo.avmusic.services.ServicePlayMusic"
+            android:enabled="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="androidx.media.session.MediaButtonReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.avinfo.avmusic.Activities.ActivityMain"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.avinfo.avmusic.Activities.ActivityPlayingList" />
+        <activity
+            android:name="com.avinfo.avmusic.Activities.ActivitySplash">
+            <!--android:theme="@style/SplashTheme">-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.avinfo.avmusic.Activities.ActivityPlayer"
+            android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ef69694019aa027534c81036315aab159ed2203b" />
+    </application>
+
+</manifest>
